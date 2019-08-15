@@ -19,7 +19,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: |
+        echo 'START INSTALL'
         npm install
+        echo 'DONE INSTALL'
         npm test
         npm run lint
 
