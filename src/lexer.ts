@@ -1,5 +1,3 @@
 export default class Lexer {
-  constructor(input: string, options = {}) {
-
-  }
+  constructor(input: string, options = {}) {}
 }

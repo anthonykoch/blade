@@ -7,6 +7,8 @@
     "build": "rollup -c rollup.config.ts",
     "exec": "tsc src/index.ts",
     "test": "jest",
+    "lint": "prettier -c \"src/**/*.{ts,js,mjs}\" \"test/**/*.{ts,js,mjs}\"",
+    "lint-fix": "prettier --write \"src/**/*.{ts,js,mjs}\" \"test/**/*.{ts,js,mjs}\"",
     "wat": "node --inspect-brk ./node_modules/.bin/jest --runInBand --watch"
   },
   "husky": {
