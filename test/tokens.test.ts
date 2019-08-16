@@ -1,8 +1,4 @@
-import Lexer, { directives } from '../src/lexer'
-
-function lex(input: string, options?) {
-  return new Lexer(input, options).next()
-}
+import Lexer from '../src/lexer'
 
 describe(`Token`, () => {
   it(`immediately returns done for empty string`, () => {
