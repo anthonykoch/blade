@@ -176,22 +176,7 @@ export default class Lexer implements Iterable<LexerToken> {
   }
 
   lex(): LexerToken | null {
-    // console.time('lex')
-
-    // console.log('-MEMES', this.index)
     let token = this.getToken()
-    // console.log('MEMES-', this.index)
-
-    // console.timeEnd('lex')
-
-    // if (token == null && !this.eof()) {
-    //   token = this.getLastTextToken()
-    // }
-    // this.index = token.end
-
-    // throw new Error('lol')
-
-    // Check here to see if text token is first
 
     if (token == null) {
       throw new Error(`unexpected token at ${this.index}`)
@@ -202,7 +187,6 @@ export default class Lexer implements Iterable<LexerToken> {
 
   getToken(): LexerToken | null {
     const start = this.index
-    // console.log('start:', start)
 
     let i = start
 
