@@ -42,17 +42,20 @@ describe(`Lexer`, () => {
   })
 
   it(`implements the iterator protocol`, () => {
-    expect(Lexer.all(` @json`)).toMatchObject([{
-      type: Token.Text,
-      value: ` `,
-      start: 0,
-      end: 1,
-    }, {
-      type: Token.Directive,
-      value: `@json`,
-      argument: null,
-      start: 1,
-      end: 6,
-    }])
+    expect(Lexer.all(` @json`)).toMatchObject([
+      {
+        type: Token.Text,
+        value: ` `,
+        start: 0,
+        end: 1,
+      },
+      {
+        type: Token.Directive,
+        value: `@json`,
+        argument: null,
+        start: 1,
+        end: 6,
+      },
+    ])
   })
 })

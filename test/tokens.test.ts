@@ -12,19 +12,23 @@ describe(`Token`, () => {
         value: `\n`,
         start: 0,
         end: 1,
-      }
+      },
     ])
 
-    expect(Lexer.all(` `)).toMatchObject([{
-      type: Token.Text,
-      value: ` `,
-      start: 0,
-      end: 1,
-    }])
+    expect(Lexer.all(` `)).toMatchObject([
+      {
+        type: Token.Text,
+        value: ` `,
+        start: 0,
+        end: 1,
+      },
+    ])
   })
 
   it(`consumes tokens in order`, () => {
-    expect(Lexer.all(` @json lol @section('content') {{ 1 + 2 }}`)).toMatchObject([
+    expect(
+      Lexer.all(` @json lol @section('content') {{ 1 + 2 }}`),
+    ).toMatchObject([
       {
         type: Token.Text,
         value: ` `,
@@ -36,7 +40,7 @@ describe(`Token`, () => {
         value: `@json`,
         start: 1,
         end: 6,
-        argument: null
+        argument: null,
       },
       {
         type: Token.Text,
@@ -62,7 +66,7 @@ describe(`Token`, () => {
         value: `{{ 1 + 2 }}`,
         start: 31,
         end: 42,
-        argument: `1 + 2`
+        argument: `1 + 2`,
       },
     ])
   })
@@ -71,43 +75,51 @@ describe(`Token`, () => {
     expect(directives).toContain('section')
 
     directives.forEach(d => {
-      expect(Lexer.all(d)).toMatchObject([{
-        type: Token.Text,
-        start: 0,
-        end: d.length,
-        value: d,
-      }])
+      expect(Lexer.all(d)).toMatchObject([
+        {
+          type: Token.Text,
+          start: 0,
+          end: d.length,
+          value: d,
+        },
+      ])
     })
   })
 
   it(`lexes directive token`, () => {
-    expect(Lexer.all(`@section`)).toMatchObject([{
-      type: Token.Directive,
-      argument: null,
-      value: `@section`,
-      start: 0,
-      end: 8,
-    }])
+    expect(Lexer.all(`@section`)).toMatchObject([
+      {
+        type: Token.Directive,
+        argument: null,
+        value: `@section`,
+        start: 0,
+        end: 8,
+      },
+    ])
 
     expect(directives).toContain('section')
 
     directives.forEach(d => {
-      expect(Lexer.all(`@${d}`)).toMatchObject([{
-        type: Token.Directive,
-        value: `@${d}`,
-        start: 0,
-        end: d.length + 1,
-      }])
+      expect(Lexer.all(`@${d}`)).toMatchObject([
+        {
+          type: Token.Directive,
+          value: `@${d}`,
+          start: 0,
+          end: d.length + 1,
+        },
+      ])
     })
   })
 
   it('lexes interpolation', () => {
-    expect(Lexer.all(`{{ mist }}`)).toMatchObject([{
-      type: Token.Interpolation,
-      value: `{{ mist }}`,
-      argument: `mist`,
-      start: 0,
-      end: 10,
-    }])
+    expect(Lexer.all(`{{ mist }}`)).toMatchObject([
+      {
+        type: Token.Interpolation,
+        value: `{{ mist }}`,
+        argument: `mist`,
+        start: 0,
+        end: 10,
+      },
+    ])
   })
 })

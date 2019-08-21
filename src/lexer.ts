@@ -153,11 +153,17 @@ export default class Lexer implements Iterable<LexerToken> {
       },
       escapedInterpolation: {
         type: Token.EscapedInterpolation,
-        regex: new RegExp(`${er(rawTags[0])}\\s*([\\s\\S]*?)\\s*${er(rawTags[1])}`, 'y'),
+        regex: new RegExp(
+          `${er(rawTags[0])}\\s*([\\s\\S]*?)\\s*${er(rawTags[1])}`,
+          'y',
+        ),
       },
       rawInterpolation: {
         type: Token.RawInterpolation,
-        regex: new RegExp(`${er(rawTags[0])}\\s*([\\s\\S]*?)\\s*${er(rawTags[1])}`, 'y'),
+        regex: new RegExp(
+          `${er(rawTags[0])}\\s*([\\s\\S]*?)\\s*${er(rawTags[1])}`,
+          'y',
+        ),
       },
     }
 
@@ -379,7 +385,6 @@ export type LexerToken =
   | TokenInterpolation
   | TokenComment
   | TokenText
-
 
 // const str =
 // ` @json lol @section('content') {{ 1 + 2 }} `.repeat(10000 / 4)
